@@ -1,31 +1,32 @@
-#ifndef LABA6_2026_EXCEPTIONS_H
-#define LABA6_2026_EXCEPTIONS_H
+#ifndef LABA6_2026_EXCEPTIONS1_H
+#define LABA6_2026_EXCEPTIONS1_H
+#pragma once
 #include <exception>
 
-class PasswordError : public std::exception {
+class PasswordValidationException : public std::exception {
 public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
-class LengthError : public PasswordError {
+class PasswordLengthException final : public PasswordValidationException {
 public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
-class RegisterError : public PasswordError {
+class PasswordRegisterException final : public PasswordValidationException {
 public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
-class DigitError : public PasswordError {
+class PasswordDigitException final : public PasswordValidationException {
 public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
-class ForbiddenLetterError : public PasswordError {
+class PasswordForbiddenLetterException final : public PasswordValidationException {
 public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
 
-#endif //LABA6_2026_EXCEPTIONS_H
+#endif //LABA6_2026_EXCEPTIONS1_H

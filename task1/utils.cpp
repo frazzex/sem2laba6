@@ -46,10 +46,11 @@ Password::Password(const std::string &password) {
 }
 
 bool Password::validate() const {
-    if (!PasswordValidator::length_validator(this->password)) throw LengthError();
-    if (!PasswordValidator::register_validator(this->password)) throw RegisterError();
-    if (!PasswordValidator::presence_digit_validator(this->password)) throw DigitError();
-    if (!PasswordValidator::presence_confusing_symbols_validator(this->password)) throw ForbiddenLetterError();
+    if (!PasswordValidator::length_validator(this->password)) throw PasswordLengthException();
+    if (!PasswordValidator::register_validator(this->password)) throw PasswordRegisterException();
+    if (!PasswordValidator::presence_digit_validator(this->password)) throw PasswordDigitException();
+    if (!PasswordValidator::presence_confusing_symbols_validator(this->password)) throw
+            PasswordForbiddenLetterException();
 
     return true;
 }
